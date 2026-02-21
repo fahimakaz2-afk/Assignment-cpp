@@ -22,7 +22,7 @@ public:
         cout << "CREATE YOUR BANK ACCOUNT"<<endl;
         cout << "Enter your name: ";
         cin >> name;
-        cout << "\nEnter the account type \n1.SAVINGS\n2.CURRENT\n3.FD\n4.SALARY\nENTER 1,2,3 or 4";
+        cout << "\nEnter the account type \n1.SAVINGS\n2.CURRENT\n3.FD\n4.SALARY\nENTER 1,2,3 or 4: ";
         cin>>at;
         if (at == 1)
             acc_type = "\nSAVINGS ACCOUNT";
@@ -43,8 +43,8 @@ public:
         cin >> userID;
         cout << "\nCreate password: ";
         cin >> password;
-        account_no = 123456;
-        cout << name << "\nYOUR ACCOUNT CREATED SUCCESSFULLY" << endl;
+        account_no = 123;
+        cout << "\n"<<name << " YOUR "<< acc_type <<" CREATED SUCCESSFULLY" << endl;
         cout << "YOUR ACCOUNT NO. IS: " << account_no << endl;
     }
     int login()
@@ -57,9 +57,9 @@ public:
         cin >> UID;
         cout << "\nEnter Your Password: " << endl;
         cin >> Pass;
-        if ((userID == UID) && (password == Pass) && (account_no == AN))
+        if ((strcmp(UID,userID))==0 && strcmp(password,Pass)==0 && account_no == AN )
         {
-            cout << "\n----LOGIN SUCCESSFULLY!!----";
+            cout << "\n----LOGIN SUCCESSFULL!----"<<endl;
             return 1;
         }
         else
@@ -87,8 +87,7 @@ public:
         if (amt <= balance)
         {
             balance -= amt;
-            cout << "\n"
-                 << name << "RS " << amt << " Withdrrawn SUCCESSFULLY." << endl;
+            cout << "\n"<< name << "RS " << amt << " Withdrrawn SUCCESSFULLY." << endl;
         }
     }
     void showbalance()
@@ -101,14 +100,15 @@ int main()
     Bank b;
     int choice;
     int opt;
+   
+    while (true){
     cout << "-------MAIN MENU--------"<<endl;
     cout << "1.Create Your Account" << endl;
     cout << "2.login" << endl;
     cout << "3.Quit" << endl;
     cout << "Enter your choice: ";
     cin >> opt;
-    while (opt != 3)
-    {
+    
         switch (opt)
         {
         case 1:
@@ -151,7 +151,7 @@ int main()
 
             else
             {
-                cout << "\n RETURNING TO MAIN MENU";
+                cout << "\n RETURNING TO MAIN MENU"<<endl;
             }
 
             break;
@@ -163,4 +163,5 @@ int main()
             break;
         }
     }
+    return 0;
 }
